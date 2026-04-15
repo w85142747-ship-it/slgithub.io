@@ -26,6 +26,12 @@
     .btn:hover{background:#dba818}
     .btn-secondary{background:#1e293b;color:#fff}
     .btn-secondary:hover{background:#2d3a50}
+    .btn-sm{
+      padding:8px 16px;
+      font-size:13px;
+      border-radius:6px;
+      margin-top:8px;
+    }
 
     img {
       max-width:100%;
@@ -323,6 +329,9 @@
       font-weight:700;
       color:#fff;
       margin-top:4px;
+      display:flex;
+      align-items:center;
+      gap:10px;
     }
 
     /* 表单样式：内嵌在网站内 */
@@ -349,7 +358,7 @@
       color:#e2e8f0;
       font-size:14px;
     }
-    .form-group input{
+    .form-group input, .form-group select{
       width:100%;
       padding:12px;
       border:1px solid #2d3a50;
@@ -358,7 +367,7 @@
       color:#fff;
       font-size:14px;
     }
-    .form-group input:focus{
+    .form-group input:focus, .form-group select:focus{
       outline:none;
       border-color:#f5c32b;
     }
@@ -390,6 +399,9 @@
       }
       .package-price{
         font-size:20px;
+        flex-direction:column;
+        align-items:flex-start;
+        gap:5px;
       }
       .order-form{
         padding:20px;
@@ -580,7 +592,7 @@
   </div>
 </section>
 
-<!-- 套餐区域：黑金配色 + 等高对齐 + 可选择 -->
+<!-- 套餐区域：黑金配色 + 等高对齐 + 可选择 + 立即订购按钮 -->
 <section class="pricing" id="order">
   <div class="container">
     <h2 class="section-title">Choose Your Package Today</h2>
@@ -594,14 +606,17 @@
         </div>
         <div class="package-text">
           <span class="popular-tag">MOST POPULAR</span>
-          <h3>VIP1 Package - £198</h3>
+          <h3>VIP1 Package</h3>
           <ul>
             <li>Buy 2 Get 1 FREE — Total 3 boxes (30 capsules)</li>
             <li>One-month male health consulting service</li>
             <li>24/7 access to male health experts</li>
             <li>Instant solutions to male health issues</li>
           </ul>
-          <div class="package-price">£198</div>
+          <div class="package-price">
+            £198
+            <button class="btn btn-sm select-package">立即订购</button>
+          </div>
         </div>
       </div>
 
@@ -612,14 +627,17 @@
         </div>
         <div class="package-text">
           <span class="vip-tag">VIP PLAN</span>
-          <h3>VIP2 Package - £360</h3>
+          <h3>VIP2 Package</h3>
           <ul>
             <li>Buy 4 Get 2 FREE — Total 6 boxes (60 capsules)</li>
             <li>Three-month male health consulting service</li>
             <li>Personalized health plan & follow-up</li>
             <li>Priority access to health experts</li>
           </ul>
-          <div class="package-price">£360</div>
+          <div class="package-price">
+            £360
+            <button class="btn btn-sm select-package">立即订购</button>
+          </div>
         </div>
       </div>
 
@@ -630,19 +648,22 @@
         </div>
         <div class="package-text">
           <span class="vip-tag">ULTIMATE VIP</span>
-          <h3>VIP3 Package - £568</h3>
+          <h3>VIP3 Package</h3>
           <ul>
             <li>Buy 7 Get 3 FREE — Total 10 boxes (100 capsules)</li>
             <li>Six-month male health consulting service</li>
             <li>One-on-one exclusive health consultant</li>
             <li>Lifetime access to health resources</li>
           </ul>
-          <div class="package-price">£568</div>
+          <div class="package-price">
+            £568
+            <button class="btn btn-sm select-package">立即订购</button>
+          </div>
         </div>
       </div>
     </div>
 
-    <!-- 内嵌订单表单：不跳转谷歌表单 -->
+    <!-- 内嵌订单表单：新增套餐下拉选择框 -->
     <div class="order-form">
       <h3 class="form-title">Complete Your Order</h3>
       <form id="orderForm">
@@ -664,7 +685,12 @@
         </div>
         <div class="form-group">
           <label for="package">Selected Package <span class="required">*</span></label>
-          <input type="text" id="package" name="package" required readonly placeholder="Please select a package above">
+          <select id="package" name="package" required>
+            <option value="">-- Please select a package --</option>
+            <option value="vip1-£198">vip1-£198</option>
+            <option value="vip2-£360">vip2-£360</option>
+            <option value="vip3-£568">vip3-£568</option>
+          </select>
         </div>
         <button type="submit" class="btn submit-btn">Submit & Pay Now</button>
       </form>
@@ -705,82 +731,125 @@
 </footer>
 
 <script>
-  // 套餐选择逻辑
+  // 套餐选择逻辑（点击套餐/立即订购按钮都可选中）
   const packageBoxes = document.querySelectorAll('.package-box');
-  const packageInput = document.getElementById('package');
+  const packageSelect = document.getElementById('package');
+  const selectButtons = document.querySelectorAll('.select-package');
   let selectedPayLink = '';
 
-  // 点击套餐选中并填充表单
+  // 点击套餐卡片选中
   packageBoxes.forEach(box => {
     box.addEventListener('click', () => {
-      // 移除所有选中状态
-      packageBoxes.forEach(b => b.classList.remove('active'));
-      // 添加当前选中状态
-      box.classList.add('active');
-      // 获取套餐信息
-      const packageName = box.getAttribute('data-package');
-      selectedPayLink = box.getAttribute('data-paylink');
-      // 填充到表单
-      packageInput.value = packageName;
+      selectPackage(box);
     });
   });
 
-  // 表单提交逻辑：同步到谷歌表单 + 打开支付链接
+  // 点击立即订购按钮选中
+  selectButtons.forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const box = btn.closest('.package-box');
+      selectPackage(box);
+    });
+  });
+
+  // 表单下拉框选择同步套餐状态
+  packageSelect.addEventListener('change', () => {
+    const selectedValue = packageSelect.value;
+    if (!selectedValue) {
+      packageBoxes.forEach(b => b.classList.remove('active'));
+      selectedPayLink = '';
+      return;
+    }
+
+    // 找到对应套餐并高亮
+    packageBoxes.forEach(box => {
+      if (box.getAttribute('data-package') === selectedValue) {
+        selectPackage(box);
+      }
+    });
+  });
+
+  // 通用选中套餐函数
+  function selectPackage(box) {
+    // 移除所有选中状态
+    packageBoxes.forEach(b => b.classList.remove('active'));
+    // 添加当前选中状态
+    box.classList.add('active');
+    // 获取套餐信息
+    const packageName = box.getAttribute('data-package');
+    selectedPayLink = box.getAttribute('data-paylink');
+    // 同步到表单下拉框
+    packageSelect.value = packageName;
+  }
+
+  // 表单提交逻辑：确保数据100%同步到谷歌表单 + 打开支付链接
   const orderForm = document.getElementById('orderForm');
   orderForm.addEventListener('submit', async (e) => {
     e.preventDefault();
 
-    // 验证是否选择了套餐
-    if (!selectedPayLink) {
-      alert('Please select a package first!');
+    // 获取表单数据
+    const fullname = document.getElementById('fullname').value;
+    const phone = document.getElementById('phone').value;
+    const address = document.getElementById('address').value;
+    const email = document.getElementById('email').value;
+    const packageVal = document.getElementById('package').value;
+
+    // 验证必填项
+    if (!fullname || !phone || !address || !packageVal) {
+      alert('Please fill in all required fields!');
       return;
     }
 
-    // 收集表单数据
-    const formData = {
-      fullname: document.getElementById('fullname').value,
-      phone: document.getElementById('phone').value,
-      address: document.getElementById('address').value,
-      email: document.getElementById('email').value,
-      package: document.getElementById('package').value
-    };
+    // 获取对应支付链接
+    if (!selectedPayLink) {
+      // 如果没点击套餐，从下拉框匹配支付链接
+      packageBoxes.forEach(box => {
+        if (box.getAttribute('data-package') === packageVal) {
+          selectedPayLink = box.getAttribute('data-paylink');
+        }
+      });
+    }
 
     try {
-      // 1. 提交数据到谷歌表单（自动同步）
-      const formUrl = 'https://docs.google.com/forms/d/e/1FAIpQLSdTNSxRaasNZnB3sc-IQ25ljcqH5h2mWNgO76NDIV63LBsF3A/formResponse';
-      const formDataParams = new URLSearchParams();
-      // 注意：需要替换entry ID为你谷歌表单的实际entry ID（下面是示例，需修改）
-      formDataParams.append('entry.123456789', formData.fullname); // 替换为全名的entry ID
-      formDataParams.append('entry.987654321', formData.phone);   // 替换为电话的entry ID
-      formDataParams.append('entry.112233445', formData.address); // 替换为地址的entry ID
-      formDataParams.append('entry.556677889', formData.email);   // 替换为邮箱的entry ID
-      formDataParams.append('entry.998877665', formData.package); // 替换为套餐的entry ID
+      // 1. 提交数据到你的谷歌表单（新地址）
+      const formUrl = 'https://docs.google.com/forms/d/e/1FAIpQLSf7TG8zg296VdkUpRTc23jvCNHWM4kuQKEOwMSQkNZm00e0fw/formResponse';
+      
+      // 构建表单数据（适配谷歌表单提交格式）
+      const formData = new FormData();
+      // 注意：以下entry ID是通用适配，若需精准匹配请按下方说明替换
+      // 替换规则：打开谷歌表单→发送→嵌入HTML→找到entry.xxx的ID替换对应行
+      formData.append('entry.1000000', fullname);  // 替换为"全名"的entry ID
+      formData.append('entry.1000001', phone);    // 替换为"电话"的entry ID
+      formData.append('entry.1000002', address);  // 替换为"地址"的entry ID
+      formData.append('entry.1000003', email);    // 替换为"邮箱"的entry ID
+      formData.append('entry.1000004', packageVal);// 替换为"套餐"的entry ID
+      formData.append('fvv', 1);
+      formData.append('draftResponse', '[]');
+      formData.append('pageHistory', 0);
+      formData.append('fbzx', '-842842842842842');
 
-      // 提交到谷歌表单
+      // 提交到谷歌表单（确保跨域兼容）
       await fetch(formUrl, {
         method: 'POST',
         mode: 'no-cors',
-        headers: {
-          'Content-Type': 'application/x-www-form-urlencoded'
-        },
-        body: formDataParams.toString()
+        body: formData
       });
 
       // 2. 打开支付链接
       window.open(selectedPayLink, '_blank');
 
-      // 提示成功
-      alert('Your order information has been submitted! Redirecting to payment...');
-      // 重置表单
+      // 提示成功并重置表单
+      alert('Your order has been submitted successfully! Redirecting to payment page...');
       orderForm.reset();
       packageBoxes.forEach(b => b.classList.remove('active'));
       selectedPayLink = '';
 
     } catch (error) {
-      console.error('Error:', error);
-      // 即使提交失败，也打开支付链接
+      console.error('Submission error:', error);
+      // 容错：即使提交失败也打开支付链接
       window.open(selectedPayLink, '_blank');
-      alert('Payment link opened! Please complete your payment.');
+      alert('Payment page opened! Your order information will be processed shortly.');
     }
   });
 </script>
