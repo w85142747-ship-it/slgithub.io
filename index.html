@@ -20,6 +20,8 @@
       font-size:15px;
       transition:all .3s;
       text-align:center;
+      border:none;
+      cursor:pointer;
     }
     .btn:hover{background:#dba818}
     .btn-secondary{background:#1e293b;color:#fff}
@@ -220,7 +222,7 @@
       font-size:14px;
     }
 
-    /* 套餐样式：左右结构 */
+    /* 套餐样式：黑金配色 + 等高对齐 + 自适应 */
     .pricing{padding:45px 0;background:#0a111f;text-align:center}
     .pricing-desc{
       color:#94a3b8;
@@ -228,34 +230,170 @@
       margin:10px auto 30px;
       max-width:700px;
     }
+    .package-container{
+      max-width:900px;
+      margin:0 auto;
+    }
     .package-box{
       display:flex;
       align-items:center;
-      background:#111827;
-      border-radius:16px;
-      padding:24px;
+      background:#101726;
+      border:2px solid #f5c32b;
+      border-radius:12px;
+      padding:20px;
       margin-bottom:20px;
-      border:2px solid #2d3a50;
       cursor:pointer;
       transition:0.3s;
       gap:20px;
-      text-decoration:none;
+      height:100%;
     }
-    .package-box:hover{border-color:#f5c32b;background:#151d2c}
-    .package-img{width:100px;flex-shrink:0}
-    .package-text{flex:1;text-align:left}
-    .package-text h3{font-size:18px;color:#f5c32b;margin-bottom:6px}
-    .package-text p{color:#e2e8f0;font-size:14px;line-height:1.5;margin-bottom:4px}
-    .package-price{font-size:22px;font-weight:700;color:#fff;margin-top:6px}
-    .popular-tag{background:#f5c32b;color:#000;padding:4px 10px;border-radius:6px;font-size:12px;font-weight:700;display:inline-block;margin-bottom:6px}
-    .vip-tag{background:#ff4444;color:#fff;padding:4px 10px;border-radius:6px;font-size:12px;font-weight:700;display:inline-block;margin-bottom:6px}
+    .package-box.active{
+      background:#1a2438;
+      box-shadow:0 0 15px rgba(245, 195, 43, 0.3);
+    }
+    .package-box:hover{
+      background:#151d2c;
+    }
+    .package-img{
+      width:100px;
+      height:100px;
+      flex-shrink:0;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    }
+    .package-img img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      border-radius:8px;
+    }
+    .package-text{
+      flex:1;
+      text-align:left;
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      height:100%;
+    }
+    .popular-tag{
+      background:#f5c32b;
+      color:#000;
+      padding:3px 10px;
+      border-radius:4px;
+      font-size:12px;
+      font-weight:700;
+      display:inline-block;
+      margin-bottom:6px;
+    }
+    .vip-tag{
+      background:#ff4444;
+      color:#fff;
+      padding:3px 10px;
+      border-radius:4px;
+      font-size:12px;
+      font-weight:700;
+      display:inline-block;
+      margin-bottom:6px;
+    }
+    .package-text h3{
+      font-size:18px;
+      color:#f5c32b;
+      margin-bottom:8px;
+    }
+    .package-text ul{
+      list-style:none;
+      margin-bottom:8px;
+    }
+    .package-text li{
+      color:#e2e8f0;
+      font-size:14px;
+      margin-bottom:4px;
+      display:flex;
+      align-items:center;
+    }
+    .package-text li::before{
+      content:"✓";
+      color:#4ade80;
+      margin-right:8px;
+      font-weight:bold;
+    }
+    .package-price{
+      font-size:24px;
+      font-weight:700;
+      color:#fff;
+      margin-top:4px;
+    }
 
-    /* 手机端保持左右结构 */
+    /* 表单样式：内嵌在网站内 */
+    .order-form{
+      max-width:800px;
+      margin:40px auto 0;
+      background:#111827;
+      padding:30px;
+      border-radius:12px;
+      border:1px solid #2d3a50;
+    }
+    .form-title{
+      font-size:20px;
+      color:#f5c32b;
+      margin-bottom:20px;
+      text-align:center;
+    }
+    .form-group{
+      margin-bottom:16px;
+    }
+    .form-group label{
+      display:block;
+      margin-bottom:6px;
+      color:#e2e8f0;
+      font-size:14px;
+    }
+    .form-group input{
+      width:100%;
+      padding:12px;
+      border:1px solid #2d3a50;
+      border-radius:8px;
+      background:#1e293b;
+      color:#fff;
+      font-size:14px;
+    }
+    .form-group input:focus{
+      outline:none;
+      border-color:#f5c32b;
+    }
+    .required{
+      color:#ff4444;
+    }
+    .submit-btn{
+      width:100%;
+      padding:16px;
+      font-size:16px;
+      margin-top:10px;
+    }
+
+    /* 响应式适配 */
     @media(max-width:768px){
-      .package-img{width:80px}
-      .package-text h3{font-size:16px}
-      .package-text p{font-size:13px}
-      .package-price{font-size:18px}
+      .package-box{
+        padding:15px;
+        gap:15px;
+      }
+      .package-img{
+        width:80px;
+        height:80px;
+      }
+      .package-text h3{
+        font-size:16px;
+      }
+      .package-text li{
+        font-size:13px;
+      }
+      .package-price{
+        font-size:20px;
+      }
+      .order-form{
+        padding:20px;
+      }
     }
 
     .faq{padding:40px 0;background:#111827}
@@ -287,12 +425,6 @@
       text-align:center;
       color:#64748b;
       font-size:13px;
-    }
-
-    @media (max-width:768px){
-      .hero h1{font-size:22px}
-      .section-title{font-size:21px}
-      .btn{padding:14px 24px;font-size:15px}
     }
   </style>
 </head>
@@ -448,62 +580,97 @@
   </div>
 </section>
 
-<!-- ===================== 套餐区域：已按你要求完全重做 ===================== -->
+<!-- 套餐区域：黑金配色 + 等高对齐 + 可选择 -->
 <section class="pricing" id="order">
   <div class="container">
     <h2 class="section-title">Choose Your Package Today</h2>
     <p class="pricing-desc">Select the package that fits your goals. All orders include FREE UK delivery & 100% discreet shipping.</p>
 
-    <!-- 套餐1：Best Value -->
-    <a href="https://docs.google.com/forms/d/e/1FAIpQLSdTNSxRaasNZnB3sc-IQ25ljcqH5h2mWNgO76NDIV63LBsF3A/viewform?usp=dialog" class="package-box">
-      <div class="package-img">
-        <img src="produck.png" alt="Package">
+    <div class="package-container">
+      <!-- 套餐1：VIP1 £198 -->
+      <div class="package-box" data-package="vip1-£198" data-paylink="https://paypal.me/pinnaclefortune/198GBP">
+        <div class="package-img">
+          <img src="produck.png" alt="VIP1 Package">
+        </div>
+        <div class="package-text">
+          <span class="popular-tag">MOST POPULAR</span>
+          <h3>VIP1 Package - £198</h3>
+          <ul>
+            <li>Buy 2 Get 1 FREE — Total 3 boxes (30 capsules)</li>
+            <li>One-month male health consulting service</li>
+            <li>24/7 access to male health experts</li>
+            <li>Instant solutions to male health issues</li>
+          </ul>
+          <div class="package-price">£198</div>
+        </div>
       </div>
-      <div class="package-text">
-        <span class="popular-tag">MOST POPULAR</span>
-        <h3>Best Value Package</h3>
-        <p>✅ Buy 2 Get 1 FREE — Total 3 boxes (30 capsules)</p>
-        <p>✅ Full 3 months supply</p>
-        <p>✅ Maximum energy & permanent vitality boost</p>
-        <p>✅ 85% of men choose this plan</p>
-        <div class="package-price">£198</div>
-      </div>
-    </a>
 
-    <!-- 套餐2：VIP 2 -->
-    <a href="https://docs.google.com/forms/d/e/1FAIpQLSdTNSxRaasNZnB3sc-IQ25ljcqH5h2mWNgO76NDIV63LBsF3A/viewform?usp=dialog" class="package-box">
-      <div class="package-img">
-        <img src="produck.png" alt="Package">
+      <!-- 套餐2：VIP2 £360 -->
+      <div class="package-box" data-package="vip2-£360" data-paylink="https://paypal.me/pinnaclefortune/360GBP">
+        <div class="package-img">
+          <img src="produck.png" alt="VIP2 Package">
+        </div>
+        <div class="package-text">
+          <span class="vip-tag">VIP PLAN</span>
+          <h3>VIP2 Package - £360</h3>
+          <ul>
+            <li>Buy 4 Get 2 FREE — Total 6 boxes (60 capsules)</li>
+            <li>Three-month male health consulting service</li>
+            <li>Personalized health plan & follow-up</li>
+            <li>Priority access to health experts</li>
+          </ul>
+          <div class="package-price">£360</div>
+        </div>
       </div>
-      <div class="package-text">
-        <span class="vip-tag">VIP PLAN</span>
-        <h3>VIP 2 Package</h3>
-        <p>✅ Buy 4 Get 2 FREE — Total 6 boxes (60 capsules)</p>
-        <p>✅ Full 6 months supply</p>
-        <p>✅ Long-term health & performance support</p>
-        <p>✅ 3 months extra health consultation</p>
-        <div class="package-price">£360</div>
-      </div>
-    </a>
 
-    <!-- 套餐3：VIP 3 -->
-    <a href="https://docs.google.com/forms/d/e/1FAIpQLSdTNSxRaasNZnB3sc-IQ25ljcqH5h2mWNgO76NDIV63LBsF3A/viewform?usp=dialog" class="package-box">
-      <div class="package-img">
-        <img src="produck.png" alt="Package">
+      <!-- 套餐3：VIP3 £568 -->
+      <div class="package-box" data-package="vip3-£568" data-paylink="https://paypal.me/pinnaclefortune/568GBP">
+        <div class="package-img">
+          <img src="produck.png" alt="VIP3 Package">
+        </div>
+        <div class="package-text">
+          <span class="vip-tag">ULTIMATE VIP</span>
+          <h3>VIP3 Package - £568</h3>
+          <ul>
+            <li>Buy 7 Get 3 FREE — Total 10 boxes (100 capsules)</li>
+            <li>Six-month male health consulting service</li>
+            <li>One-on-one exclusive health consultant</li>
+            <li>Lifetime access to health resources</li>
+          </ul>
+          <div class="package-price">£568</div>
+        </div>
       </div>
-      <div class="package-text">
-        <span class="vip-tag">ULTIMATE VIP</span>
-        <h3>VIP 3 Ultimate Package</h3>
-        <p>✅ Buy 7 Get 3 FREE — Total 10 boxes (100 capsules)</p>
-        <p>✅ Full 12 months supply</p>
-        <p>✅ Lifetime performance & confidence</p>
-        <p>✅ LIFETIME private consultation</p>
-        <div class="package-price">£568</div>
-      </div>
-    </a>
+    </div>
+
+    <!-- 内嵌订单表单：不跳转谷歌表单 -->
+    <div class="order-form">
+      <h3 class="form-title">Complete Your Order</h3>
+      <form id="orderForm">
+        <div class="form-group">
+          <label for="fullname">Full Name <span class="required">*</span></label>
+          <input type="text" id="fullname" name="fullname" required placeholder="Enter your full name">
+        </div>
+        <div class="form-group">
+          <label for="phone">Phone Number <span class="required">*</span></label>
+          <input type="tel" id="phone" name="phone" required placeholder="Enter your phone number">
+        </div>
+        <div class="form-group">
+          <label for="address">Delivery Address <span class="required">*</span></label>
+          <input type="text" id="address" name="address" required placeholder="Enter your full delivery address">
+        </div>
+        <div class="form-group">
+          <label for="email">Email Address (Optional)</label>
+          <input type="email" id="email" name="email" placeholder="Enter your email address">
+        </div>
+        <div class="form-group">
+          <label for="package">Selected Package <span class="required">*</span></label>
+          <input type="text" id="package" name="package" required readonly placeholder="Please select a package above">
+        </div>
+        <button type="submit" class="btn submit-btn">Submit & Pay Now</button>
+      </form>
+    </div>
   </div>
 </section>
-<!-- ==================================================================== -->
 
 <section class="faq" id="faq">
   <div class="container">
@@ -536,6 +703,87 @@
 <footer>
   &copy; 2025 Day N Night | UK. All rights reserved.
 </footer>
+
+<script>
+  // 套餐选择逻辑
+  const packageBoxes = document.querySelectorAll('.package-box');
+  const packageInput = document.getElementById('package');
+  let selectedPayLink = '';
+
+  // 点击套餐选中并填充表单
+  packageBoxes.forEach(box => {
+    box.addEventListener('click', () => {
+      // 移除所有选中状态
+      packageBoxes.forEach(b => b.classList.remove('active'));
+      // 添加当前选中状态
+      box.classList.add('active');
+      // 获取套餐信息
+      const packageName = box.getAttribute('data-package');
+      selectedPayLink = box.getAttribute('data-paylink');
+      // 填充到表单
+      packageInput.value = packageName;
+    });
+  });
+
+  // 表单提交逻辑：同步到谷歌表单 + 打开支付链接
+  const orderForm = document.getElementById('orderForm');
+  orderForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    // 验证是否选择了套餐
+    if (!selectedPayLink) {
+      alert('Please select a package first!');
+      return;
+    }
+
+    // 收集表单数据
+    const formData = {
+      fullname: document.getElementById('fullname').value,
+      phone: document.getElementById('phone').value,
+      address: document.getElementById('address').value,
+      email: document.getElementById('email').value,
+      package: document.getElementById('package').value
+    };
+
+    try {
+      // 1. 提交数据到谷歌表单（自动同步）
+      const formUrl = 'https://docs.google.com/forms/d/e/1FAIpQLSdTNSxRaasNZnB3sc-IQ25ljcqH5h2mWNgO76NDIV63LBsF3A/formResponse';
+      const formDataParams = new URLSearchParams();
+      // 注意：需要替换entry ID为你谷歌表单的实际entry ID（下面是示例，需修改）
+      formDataParams.append('entry.123456789', formData.fullname); // 替换为全名的entry ID
+      formDataParams.append('entry.987654321', formData.phone);   // 替换为电话的entry ID
+      formDataParams.append('entry.112233445', formData.address); // 替换为地址的entry ID
+      formDataParams.append('entry.556677889', formData.email);   // 替换为邮箱的entry ID
+      formDataParams.append('entry.998877665', formData.package); // 替换为套餐的entry ID
+
+      // 提交到谷歌表单
+      await fetch(formUrl, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded'
+        },
+        body: formDataParams.toString()
+      });
+
+      // 2. 打开支付链接
+      window.open(selectedPayLink, '_blank');
+
+      // 提示成功
+      alert('Your order information has been submitted! Redirecting to payment...');
+      // 重置表单
+      orderForm.reset();
+      packageBoxes.forEach(b => b.classList.remove('active'));
+      selectedPayLink = '';
+
+    } catch (error) {
+      console.error('Error:', error);
+      // 即使提交失败，也打开支付链接
+      window.open(selectedPayLink, '_blank');
+      alert('Payment link opened! Please complete your payment.');
+    }
+  });
+</script>
 
 </body>
 </html>
