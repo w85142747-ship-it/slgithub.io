@@ -608,7 +608,7 @@
           <span class="popular-tag">MOST POPULAR</span>
           <h3>VIP1 Package</h3>
           <ul>
-            <li>Buy 2 Get 1 FREE — Total 3 boxes </li>
+            <li>Buy 2 Get 1 FREE — Total 3 boxes (30 capsules)</li>
             <li>One-month male health consulting service</li>
             <li>24/7 access to male health experts</li>
             <li>Instant solutions to male health issues</li>
@@ -629,7 +629,7 @@
           <span class="vip-tag">VIP PLAN</span>
           <h3>VIP2 Package</h3>
           <ul>
-            <li>Buy 4 Get 2 FREE — Total 6 boxes </li>
+            <li>Buy 4 Get 2 FREE — Total 6 boxes (60 capsules)</li>
             <li>Three-month male health consulting service</li>
             <li>Personalized health plan & follow-up</li>
             <li>Priority access to health experts</li>
@@ -650,7 +650,7 @@
           <span class="vip-tag">ULTIMATE VIP</span>
           <h3>VIP3 Package</h3>
           <ul>
-            <li>Buy 7 Get 3 FREE — Total 10 boxes</li>
+            <li>Buy 7 Get 3 FREE — Total 10 boxes (100 capsules)</li>
             <li>Six-month male health consulting service</li>
             <li>One-on-one exclusive health consultant</li>
             <li>Lifetime access to health resources</li>
@@ -817,13 +817,12 @@
       
       // 构建表单数据（适配谷歌表单提交格式）
       const formData = new FormData();
-      // 注意：以下entry ID是通用适配，若需精准匹配请按下方说明替换
-      // 替换规则：打开谷歌表单→发送→嵌入HTML→找到entry.xxx的ID替换对应行
-      formData.append('entry.1000000', fullname);  // 替换为"全名"的entry ID
-      formData.append('entry.1000001', phone);    // 替换为"电话"的entry ID
-      formData.append('entry.1000002', address);  // 替换为"地址"的entry ID
-      formData.append('entry.1000003', email);    // 替换为"邮箱"的entry ID
-      formData.append('entry.1000004', packageVal);// 替换为"套餐"的entry ID
+      // 已替换为你提供的真实entry ID
+      formData.append('entry.533442796', fullname);  // 全名
+      formData.append('entry.444964942', phone);    // 电话
+      formData.append('entry.390342779', address);  // 地址
+      formData.append('entry.141561044', email);    // 邮箱
+      formData.append('entry.1825569380', packageVal);// 套餐
       formData.append('fvv', 1);
       formData.append('draftResponse', '[]');
       formData.append('pageHistory', 0);
