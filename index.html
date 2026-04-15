@@ -220,6 +220,7 @@
       font-size:14px;
     }
 
+    /* 套餐样式：左右结构 */
     .pricing{padding:45px 0;background:#0a111f;text-align:center}
     .pricing-desc{
       color:#94a3b8;
@@ -227,49 +228,35 @@
       margin:10px auto 30px;
       max-width:700px;
     }
-    .pricing-grid{
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-      gap:16px;
-      max-width:1000px;
-      margin:0 auto;
-    }
-    .price-card{
+    .package-box{
+      display:flex;
+      align-items:center;
       background:#111827;
-      padding:30px 16px;
       border-radius:16px;
-      border:1px solid #2d3a50;
-      position:relative;
+      padding:24px;
+      margin-bottom:20px;
+      border:2px solid #2d3a50;
+      cursor:pointer;
+      transition:0.3s;
+      gap:20px;
+      text-decoration:none;
     }
-    .price-card.popular:before{
-      content:"BEST VALUE";
-      position:absolute;
-      top:-12px;
-      left:50%;
-      transform:translateX(-50%);
-      background:#f5c32b;
-      color:#000;
-      padding:6px 18px;
-      border-radius:20px;
-      font-size:12px;
-      font-weight:800;
+    .package-box:hover{border-color:#f5c32b;background:#151d2c}
+    .package-img{width:100px;flex-shrink:0}
+    .package-text{flex:1;text-align:left}
+    .package-text h3{font-size:18px;color:#f5c32b;margin-bottom:6px}
+    .package-text p{color:#e2e8f0;font-size:14px;line-height:1.5;margin-bottom:4px}
+    .package-price{font-size:22px;font-weight:700;color:#fff;margin-top:6px}
+    .popular-tag{background:#f5c32b;color:#000;padding:4px 10px;border-radius:6px;font-size:12px;font-weight:700;display:inline-block;margin-bottom:6px}
+    .vip-tag{background:#ff4444;color:#fff;padding:4px 10px;border-radius:6px;font-size:12px;font-weight:700;display:inline-block;margin-bottom:6px}
+
+    /* 手机端保持左右结构 */
+    @media(max-width:768px){
+      .package-img{width:80px}
+      .package-text h3{font-size:16px}
+      .package-text p{font-size:13px}
+      .package-price{font-size:18px}
     }
-    .price-card.vip:before{
-      content:"VIP";
-      position:absolute;
-      top:-12px;
-      left:50%;
-      transform:translateX(-50%);
-      background:#ff4444;
-      color:#fff;
-      padding:6px 18px;
-      border-radius:20px;
-      font-size:12px;
-      font-weight:800;
-    }
-    .price-card h3{font-size:19px;margin-bottom:8px}
-    .price{font-size:30px;font-weight:800;margin:16px 0;color:#f5c32b}
-    .reorder-note{margin-top:12px;color:#94a3b8;font-size:13px}
 
     .faq{padding:40px 0;background:#111827}
     .faq-grid{max-width:850px;margin:0 auto}
@@ -330,11 +317,10 @@
 <section class="hero">
   <div class="container">
     <img src="produck.png" alt="Day N Night Male Vitality" class="product-img" loading="eager">
-
     <h1>Premium Male Vitality Support — Trusted by 14,000+ UK Men</h1>
     <p>100% natural herbal supplement that boosts your energy, stamina, and performance. Fast-acting, long-lasting, fully discreet.</p>
     <div class="hero-buttons">
-      <a href="#order" class="btn">Order Now</a>
+      <a href="#order" class="btn">Choose My Package</a>
       <a href="#stories" class="btn btn-secondary">Success Stories</a>
     </div>
   </div>
@@ -407,7 +393,6 @@
 <section class="success-stories" id="stories">
   <div class="container">
     <h2 class="section-title">Real Life Success Stories</h2>
-
     <div class="story-card">
       <img src="james.png" alt="James" class="avatar">
       <h3>James, 42 • London — My Life Changed Completely</h3>
@@ -415,7 +400,6 @@
       <p>After the first capsule, everything changed. Within 20 minutes I felt strong, steady energy. My stamina improved dramatically, and confidence came back. The effect lasted over 48 hours.</p>
       <p>Now I use it regularly. My relationship is better, my mood is better, and I feel like I’m in my 30s again. This product saved my confidence.</p>
     </div>
-
     <div class="story-card">
       <img src="mike.png" alt="Michael" class="avatar">
       <h3>Michael, 38 • Manchester — From Struggling to In Control</h3>
@@ -423,11 +407,9 @@
       <p>Then I found Day N Night. I took one capsule before a special evening, and the difference was night and day. I felt strong, in control, full of stamina — natural power.</p>
       <p>Now I order the 3-box package monthly. My partner is happier, I’m happier, and I finally feel like a real man again. This changed my life.</p>
     </div>
-
   </div>
 </section>
 
-<!-- 评论区：6个英国顾客头像全部替换完成！-->
 <section class="testimonials">
   <div class="container">
     <h2 class="section-title">UK Customer Reviews</h2>
@@ -466,49 +448,62 @@
   </div>
 </section>
 
+<!-- ===================== 套餐区域：已按你要求完全重做 ===================== -->
 <section class="pricing" id="order">
   <div class="container">
-    <h2 class="section-title">Order Your Package Today</h2>
-    <p class="pricing-desc">All orders include FREE UK delivery & discreet packaging. Choose the best plan for long-term results.</p>
-    <div class="pricing-grid">
+    <h2 class="section-title">Choose Your Package Today</h2>
+    <p class="pricing-desc">Select the package that fits your goals. All orders include FREE UK delivery & 100% discreet shipping.</p>
 
-      <div class="price-card">
-        <h3>Trial Pack</h3>
-        <p>1 box | 10 capsules</p>
-        <div class="price">£99</div>
-        <a href="#" class="btn">Order Now</a>
-        <p class="reorder-note">For first-time users</p>
+    <!-- 套餐1：Best Value -->
+    <a href="https://docs.google.com/forms/d/e/1FAIpQLSdTNSxRaasNZnB3sc-IQ25ljcqH5h2mWNgO76NDIV63LBsF3A/viewform?usp=dialog" class="package-box">
+      <div class="package-img">
+        <img src="produck.png" alt="Package">
       </div>
-
-      <div class="price-card popular">
-        <h3>Best Value</h3>
-        <p>Buy 2 Get 1 FREE | 3 boxes</p>
-        <div class="price">£198</div>
-        <a href="#" class="btn">Order Now</a>
-        <p class="reorder-note">Most popular choice</p>
+      <div class="package-text">
+        <span class="popular-tag">MOST POPULAR</span>
+        <h3>Best Value Package</h3>
+        <p>✅ Buy 2 Get 1 FREE — Total 3 boxes (30 capsules)</p>
+        <p>✅ Full 3 months supply</p>
+        <p>✅ Maximum energy & permanent vitality boost</p>
+        <p>✅ 85% of men choose this plan</p>
+        <div class="package-price">£198</div>
       </div>
+    </a>
 
-      <div class="price-card vip">
-        <h3>VIP 2 Plan</h3>
-        <p>Buy 4 Get 2 FREE | 6 boxes</p>
-        <p>+ 3 months health support</p>
-        <div class="price">£360</div>
-        <a href="#" class="btn">Order Now</a>
-        <p class="reorder-note">VIP exclusive</p>
+    <!-- 套餐2：VIP 2 -->
+    <a href="https://docs.google.com/forms/d/e/1FAIpQLSdTNSxRaasNZnB3sc-IQ25ljcqH5h2mWNgO76NDIV63LBsF3A/viewform?usp=dialog" class="package-box">
+      <div class="package-img">
+        <img src="produck.png" alt="Package">
       </div>
-
-      <div class="price-card vip">
-        <h3>VIP 3 Plan</h3>
-        <p>Buy 7 Get 3 FREE | 10 boxes</p>
-        <p>+ LIFETIME consultation</p>
-        <div class="price">£568</div>
-        <a href="#" class="btn">Order Now</a>
-        <p class="reorder-note">Ultimate package</p>
+      <div class="package-text">
+        <span class="vip-tag">VIP PLAN</span>
+        <h3>VIP 2 Package</h3>
+        <p>✅ Buy 4 Get 2 FREE — Total 6 boxes (60 capsules)</p>
+        <p>✅ Full 6 months supply</p>
+        <p>✅ Long-term health & performance support</p>
+        <p>✅ 3 months extra health consultation</p>
+        <div class="package-price">£360</div>
       </div>
+    </a>
 
-    </div>
+    <!-- 套餐3：VIP 3 -->
+    <a href="https://docs.google.com/forms/d/e/1FAIpQLSdTNSxRaasNZnB3sc-IQ25ljcqH5h2mWNgO76NDIV63LBsF3A/viewform?usp=dialog" class="package-box">
+      <div class="package-img">
+        <img src="produck.png" alt="Package">
+      </div>
+      <div class="package-text">
+        <span class="vip-tag">ULTIMATE VIP</span>
+        <h3>VIP 3 Ultimate Package</h3>
+        <p>✅ Buy 7 Get 3 FREE — Total 10 boxes (100 capsules)</p>
+        <p>✅ Full 12 months supply</p>
+        <p>✅ Lifetime performance & confidence</p>
+        <p>✅ LIFETIME private consultation</p>
+        <div class="package-price">£568</div>
+      </div>
+    </a>
   </div>
 </section>
+<!-- ==================================================================== -->
 
 <section class="faq" id="faq">
   <div class="container">
