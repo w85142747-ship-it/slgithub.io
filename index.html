@@ -25,7 +25,7 @@
     .btn-secondary{background:#1e293b;color:#fff}
     .btn-secondary:hover{background:#2d3a50}
 
-    /* ✅ 全端安全图片 — 绝不缺角、不变形 */
+    /* ✅ 全端安全图片 */
     img {
       max-width:100%;
       height:auto;
@@ -39,9 +39,12 @@
       margin:0 auto 16px;
       object-fit:cover;
     }
+
+    /* ✅ 产品图终极适配：PC同宽 + 手机自适应 + 不超边缘 */
     .product-img {
-      max-width:340px;
-      width:100%;
+      width: 100% !important;
+      max-width: 100% !important;
+      height: auto !important;
       margin:0 auto 30px;
       object-fit:contain;
     }
@@ -329,7 +332,7 @@
 
 <section class="hero">
   <div class="container">
-    <!-- 🔥 最新产品图 已替换 · 绝不缺图缺角 -->
+    <!-- 🔥 最终产品图 · PC同宽 + 手机自适应 -->
     <img src="https://raw.githubusercontent.com/w85142747-ship-it/slgithub.io/8d47d9fe6884d1be0e4399d84d342e3a741943cf/produck.png" alt="Day N Night Male Vitality" class="product-img">
 
     <h1>Premium Male Vitality Support — Trusted by 14,000+ UK Men</h1>
