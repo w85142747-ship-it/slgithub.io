@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Day N Night | Premium Male Vitality | UK</title>
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box;font-family:'Inter',sans-serif}
+    body{background:#0a111f;color:#fff;line-height:1.7}
+    .container{max-width:1140px;margin:0 auto;padding:0 24px}
+
+    .btn{
+      display:inline-block;
+      padding:18px 42px;
+      background:#f5c32b;
+      color:#000;
+      font-weight:700;
+      border-radius:8px;
+      text-decoration:none;
+      font-size:16px;
+      transition:all .3s;
+      text-align:center;
+    }
+    .btn:hover{background:#dba818}
+    .btn-secondary{background:#1e293b;color:#fff}
+    .btn-secondary:hover{background:#2d3a50}
+
+    /* ✅ RESPONSIVE IMAGES — MOBILE 100% SAFE */
+    img {
+      max-width:100%;
+      height:auto;
+      display:block;
+      border-radius:12px;
+    }
+    .avatar {
+      width:80px;
+      height:80px;
+      border-radius:50%;
+      margin:0 auto 16px;
+      object-fit:cover;
+    }
+    .product-img {
+      max-width:320px;
+      margin:0 auto 30px;
+    }
+
+    /* ✅ INGREDIENT IMAGE — 原料图片样式 */
+    .ingredient-img {
+      width:100%;
+      height:110px;
+      object-fit:cover;
+      border-radius:8px;
+      margin-bottom:12px;
+    }
+
+    /* HEADER */
+    header{
+      padding:20px 0;
+      border-bottom:1px solid #1e293b;
+      position:sticky;
+      top:0;
+      background:#0a111f;
+      z-index:99
+    }
+    .header-inner{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      flex-wrap:wrap;
+      gap:16px;
+    }
+    .logo{font-size:24px;font-weight:800;color:#f5c32b}
+    .nav a{
+      color:#e2e8f0;
+      margin-left:16px;
+      text-decoration:none;
+      font-weight:500;
+      font-size:15px;
+    }
+
+    /* HERO */
+    .hero{
+      padding:60px 0;
+      background:linear-gradient(135deg,#0a111f,#101a2e);
+      text-align:center;
+    }
+    .hero h1{
+      font-size:32px;
+      line-height:1.3;
+      margin:0 auto 20px;
+    }
+    .hero p{
+      font-size:17px;
+      color:#94a3b8;
+      margin:0 auto 26px;
+    }
+    .hero-buttons{
+      display:flex;
+      justify-content:center;
+      gap:12px;
+      flex-wrap:wrap;
+    }
+
+    /* BADGE */
+    .trust-badge{
+      background:#111827;
+      padding:12px;
+      text-align:center;
+      border-bottom:1px solid #1e293b;
+      font-size:14px;
+    }
+    .trust-badge p{color:#cbd5e1}
+    .trust-badge strong{color:#f5c32b}
+
+    /* FEATURES */
+    .features{padding:60px 0}
+    .section-title{
+      text-align:center;
+      font-size:28px;
+      margin-bottom:40px;
+      line-height:1.3;
+    }
+    .features-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+      gap:20px
+    }
+    .feature-card{
+      background:#111827;
+      padding:30px 20px;
+      border-radius:12px;
+      text-align:center;
+    }
+    .feature-card h3{
+      color:#f5c32b;
+      font-size:20px;
+      margin-bottom:10px;
+    }
+    .feature-card p{color:#94a3b8;font-size:15px}
+
+    /* INGREDIENTS — WITH IMAGES */
+    .ingredients{background:#111827;padding:60px 0;text-align:center}
+    .ingredients-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(140px,1fr));
+      gap:14px;
+      margin-top:30px
+    }
+    .ingredient{
+      background:#1e293b;
+      padding:20px;
+      border-radius:10px;
+      font-weight:600;
+      font-size:15px;
+    }
+
+    /* RESULTS */
+    .results{padding:60px 0;background:#0a111f}
+    .results p{
+      max-width:800px;
+      margin:0 auto 14px;
+      text-align:center;
+      color:#94a3b8;
+      font-size:16px;
+    }
+
+    /* SUCCESS STORIES */
+    .success-stories{background:#111827;padding:70px 0}
+    .story-card{
+      background:#1e293b;
+      padding:30px 24px;
+      border-radius:14px;
+      margin:0 auto 30px;
+      max-width:100%;
+      text-align:center;
+    }
+    .story-card h3{
+      color:#f5c32b;
+      font-size:21px;
+      margin-bottom:14px;
+      line-height:1.4;
+    }
+    .story-card p{
+      font-size:16px;
+      color:#e2e8f0;
+      line-height:1.7;
+      margin-bottom:10px;
+      text-align:left;
+    }
+
+    /* TESTIMONIALS — MORE REVIEWS */
+    .testimonials{background:#0a111f;padding:70px 0}
+    .testi-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+      gap:20px;
+      margin-top:30px
+    }
+    .testi-card{
+      background:#1e293b;
+      padding:28px;
+      border-radius:12px;
+    }
+    .testi-card p{
+      font-style:italic;
+      color:#e2e8f0;
+      margin-bottom:16px;
+      font-size:15px;
+    }
+    .testi-card h4{
+      color:#f5c32b;
+      text-align:right;
+      font-size:15px;
+    }
+
+    /* PRICING */
+    .pricing{padding:70px 0;background:#0a111f;text-align:center}
+    .pricing-desc{
+      color:#94a3b8;
+      font-size:16px;
+      margin:14px auto 40px;
+      max-width:700px;
+    }
+    .pricing-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+      gap:20px;
+      max-width:1000px;
+      margin:0 auto;
+    }
+    .price-card{
+      background:#111827;
+      padding:40px 20px;
+      border-radius:16px;
+      border:1px solid #2d3a50;
+      position:relative;
+    }
+    .price-card.popular:before{
+      content:"BEST VALUE";
+      position:absolute;
+      top:-12px;
+      left:50%;
+      transform:translateX(-50%);
+      background:#f5c32b;
+      color:#000;
+      padding:6px 18px;
+      border-radius:20px;
+      font-size:12px;
+      font-weight:800;
+    }
+    .price-card.vip:before{
+      content:"VIP";
+      position:absolute;
+      top:-12px;
+      left:50%;
+      transform:translateX(-50%);
+      background:#ff4444;
+      color:#fff;
+      padding:6px 18px;
+      border-radius:20px;
+      font-size:12px;
+      font-weight:800;
+    }
+    .price-card h3{font-size:22px;margin-bottom:10px}
+    .price{font-size:34px;font-weight:800;margin:20px 0;color:#f5c32b}
+    .reorder-note{margin-top:14px;color:#94a3b8;font-size:14px}
+
+    /* FAQ */
+    .faq{padding:60px 0;background:#111827}
+    .faq-grid{max-width:850px;margin:0 auto}
+    .faq-item{
+      background:#1e293b;
+      padding:22px;
+      border-radius:10px;
+      margin-bottom:14px;
+    }
+    .faq-item h4{
+      color:#f5c32b;
+      font-size:17px;
+      margin-bottom:8px;
+    }
+    .faq-item p{color:#94a3b8;font-size:15px}
+
+    /* FOOTER */
+    .disclaimer{
+      background:#0a111f;
+      padding:28px 16px;
+      text-align:center;
+      color:#64748b;
+      font-size:12px;
+      line-height:1.5;
+    }
+    footer{
+      background:#111827;
+      padding:30px;
+      text-align:center;
+      color:#64748b;
+      font-size:14px;
+    }
+
+    /* FULL MOBILE OPTIMIZATION */
+    @media (max-width:768px){
+      .hero h1{font-size:26px}
+      .section-title{font-size:24px}
+      .nav a{margin-left:10px;font-size:14px}
+      .btn{padding:14px 24px;font-size:15px}
+    }
+  </style>
+</head>
+<body>
+
+<div class="trust-badge">
+  <p>⭐ <strong>4.9/5 Trustpilot Rating</strong> | 14,000+ UK Customers | Discreet UK Delivery</p>
+</div>
+
+<header>
+  <div class="container header-inner">
+    <div class="logo">Day N Night</div>
+    <nav class="nav">
+      <a href="#benefits">Benefits</a>
+      <a href="#stories">Stories</a>
+      <a href="#order">Order</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="container">
+    <img src="product.jpg" alt="Day N Night Male Vitality" class="product-img">
+
+    <h1>Premium Male Vitality Support — Trusted by 14,000+ UK Men</h1>
+    <p>100% natural herbal supplement that boosts your energy, stamina, and performance. Fast-acting, long-lasting, fully discreet.</p>
+    <div class="hero-buttons">
+      <a href="#order" class="btn">Order Now</a>
+      <a href="#stories" class="btn btn-secondary">Success Stories</a>
+    </div>
+  </div>
+</section>
+
+<section class="features" id="benefits">
+  <div class="container">
+    <h2 class="section-title">Why UK Men Choose Us</h2>
+    <div class="features-grid">
+      <div class="feature-card">
+        <h3>100% Natural & Safe</h3>
+        <p>5 clinically-backed herbs, no chemicals, no prescriptions, no side effects.</p>
+      </div>
+      <div class="feature-card">
+        <h3>Long-Lasting Results</h3>
+        <p>One capsule works up to 48 hours — strong, steady performance when you need it.</p>
+      </div>
+      <div class="feature-card">
+        <h3>100% Discreet Shipping</h3>
+        <p>Plain packaging. Private UK delivery in 2–4 working days.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="ingredients">
+  <div class="container">
+    <h2 class="section-title">Powerful Natural Ingredients</h2>
+    <div class="ingredients-grid">
+      <div class="ingredient">
+        <img src="maca.jpg" class="ingredient-img" alt="Maca Root">
+        Maca Root
+      </div>
+      <div class="ingredient">
+        <img src="tongkat.jpg" class="ingredient-img" alt="Tongkat Ali">
+        Tongkat Ali
+      </div>
+      <div class="ingredient">
+        <img src="hornygoat.jpg" class="ingredient-img" alt="Horny Goat Weed">
+        Horny Goat Weed
+      </div>
+      <div class="ingredient">
+        <img src="ginseng.jpg" class="ingredient-img" alt="Korean Ginseng">
+        Korean Ginseng
+      </div>
+      <div class="ingredient">
+        <img src="oyster.jpg" class="ingredient-img" alt="Oyster Extract">
+        Oyster Extract
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="results">
+  <div class="container">
+    <h2 class="section-title">Real Results for UK Men</h2>
+    <p>✅ Boost energy & stamina within 20 minutes</p>
+    <p>✅ Stronger, longer-lasting performance</p>
+    <p>✅ Improved confidence & vitality</p>
+    <p>✅ No jitters, no crashes — natural & steady</p>
+    <p>✅ Trusted by thousands of repeat buyers</p>
+  </div>
+</section>
+
+<section class="success-stories" id="stories">
+  <div class="container">
+    <h2 class="section-title">Real Life Success Stories</h2>
+
+    <div class="story-card">
+      <img src="james.jpg" alt="James" class="avatar">
+      <h3>James, 42 • London — My Life Changed Completely</h3>
+      <p>Before using Day N Night, I struggled with low energy and poor stamina every day. I felt tired, unconfident, and it hurt my relationship and work.</p>
+      <p>After the first capsule, everything changed. Within 20 minutes I felt strong, steady energy. My stamina improved dramatically, and confidence came back. The effect lasted over 48 hours.</p>
+      <p>Now I use it regularly. My relationship is better, my mood is better, and I feel like I’m in my 30s again. This product saved my confidence.</p>
+    </div>
+
+    <div class="story-card">
+      <img src="michael.jpg" alt="Michael" class="avatar">
+      <h3>Michael, 38 • Manchester — From Struggling to In Control</h3>
+      <p>I was embarrassed and frustrated for years. I couldn’t perform when it mattered, had low energy, and felt weak. It ruined my confidence.</p>
+      <p>Then I found Day N Night. I took one capsule before a special evening, and the difference was night and day. I felt strong, in control, full of stamina — natural power.</p>
+      <p>Now I order the 3-box package monthly. My partner is happier, I’m happier, and I finally feel like a real man again. This changed my life.</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- ====================== 6条真实评价 · 饱满好看 ====================== -->
+<section class="testimonials">
+  <div class="container">
+    <h2 class="section-title">UK Customer Reviews</h2>
+    <div class="testi-grid">
+      <div class="testi-card">
+        <p>"No side effects, no weird feelings — just strong, reliable performance. My partner noticed the difference immediately."</p>
+        <h4>— Robert, 51 • Birmingham</h4>
+      </div>
+      <div class="testi-card">
+        <p>"I was skeptical at first, but it works exactly as described. Fast delivery, great value, consistent results."</p>
+        <h4>— David, 35 • Leeds</h4>
+      </div>
+      <div class="testi-card">
+        <p>"Perfect for stamina and daily vitality. I use it before important moments, and it never lets me down."</p>
+        <h4>— Simon, 44 • Liverpool</h4>
+      </div>
+
+      <div class="testi-card">
+        <p>"I’ve tried many supplements before, but nothing works like this. Steady energy, no crashes, highly recommend."</p>
+        <h4>— Mark, 47 • Newcastle</h4>
+      </div>
+      <div class="testi-card">
+        <p>"Discreet delivery, quick results, and long lasting. My confidence is back after only 2 weeks."</p>
+        <h4>— Paul, 39 • Bristol</h4>
+      </div>
+      <div class="testi-card">
+        <p>"100% natural and really effective. I feel younger, stronger, and more energized every day."</p>
+        <h4>— John, 54 • Glasgow</h4>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="pricing" id="order">
+  <div class="container">
+    <h2 class="section-title">Order Your Package Today</h2>
+    <p class="pricing-desc">All orders include FREE UK delivery & discreet packaging. Choose the best plan for long-term results.</p>
+    <div class="pricing-grid">
+
+      <div class="price-card">
+        <h3>Trial Pack</h3>
+        <p>1 box | 10 capsules</p>
+        <div class="price">£99</div>
+        <a href="#" class="btn">Order Now</a>
+        <p class="reorder-note">For first-time users</p>
+      </div>
+
+      <div class="price-card popular">
+        <h3>Best Value</h3>
+        <p>Buy 2 Get 1 FREE | Total 3 boxes</p>
+        <div class="price">£198</div>
+        <a href="#" class="btn">Order Now</a>
+        <p class="reorder-note">Most popular choice</p>
+      </div>
+
+      <div class="price-card vip">
+        <h3>VIP 2 Plan</h3>
+        <p>Buy 4 Get 2 FREE | Total 6 boxes</p>
+        <p>+ 3 months private health service</p>
+        <div class="price">£360</div>
+        <a href="#" class="btn">Order Now</a>
+        <p class="reorder-note">VIP exclusive support</p>
+      </div>
+
+      <div class="price-card vip">
+        <h3>VIP 3 Plan</h3>
+        <p>Buy 7 Get 3 FREE | Total 10 boxes</p>
+        <p>+ LIFETIME private health consultation</p>
+        <div class="price">£568</div>
+        <a href="#" class="btn">Order Now</a>
+        <p class="reorder-note">Ultimate lifetime package</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="faq" id="faq">
+  <div class="container">
+    <h2 class="section-title">Frequently Asked Questions</h2>
+    <div class="faq-grid">
+      <div class="faq-item">
+        <h4>Is this safe for adult men?</h4>
+        <p>Yes. 100% natural herbs, lab-tested, safe for healthy men. Consult your doctor if you have conditions.</p>
+      </div>
+      <div class="faq-item">
+        <h4>How fast is UK delivery?</h4>
+        <p>Ships within 24 hours. Delivery takes 2–4 working days with 100% discreet packaging.</p>
+      </div>
+      <div class="faq-item">
+        <h4>How quickly does it work?</h4>
+        <p>Most men feel stronger energy & stamina within 15–30 minutes.</p>
+      </div>
+      <div class="faq-item">
+        <h4>Do customers reorder?</h4>
+        <p>Yes — over 85% reorder because of real, consistent results.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="disclaimer">
+  This product is a dietary supplement, not a medicine. It is not intended to diagnose, treat, cure, or prevent any disease. Results vary individually.
+</div>
+
+<footer>
+  &copy; 2025 Day N Night | UK. All rights reserved.
+</footer>
+
+</body>
+</html>
