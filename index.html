@@ -228,7 +228,7 @@
       font-size:14px;
     }
 
-    /* 套餐样式：黑金配色 + 等高对齐 + 自适应 */
+    /* 套餐样式：强化高亮效果 + 等高对齐 + 自适应 */
     .pricing{padding:45px 0;background:#0a111f;text-align:center}
     .pricing-desc{
       color:#94a3b8;
@@ -249,16 +249,21 @@
       padding:20px;
       margin-bottom:20px;
       cursor:pointer;
-      transition:0.3s;
+      transition:all 0.3s ease;
       gap:20px;
       height:100%;
+      position:relative;
     }
+    /* 强化高亮效果：更明显的背景+阴影+边框 */
     .package-box.active{
-      background:#1a2438;
-      box-shadow:0 0 15px rgba(245, 195, 43, 0.3);
+      background:#202c46;
+      box-shadow:0 0 20px rgba(245, 195, 43, 0.5);
+      border-color:#ffd700;
+      transform:scale(1.02);
     }
     .package-box:hover{
       background:#151d2c;
+      box-shadow:0 0 10px rgba(245, 195, 43, 0.2);
     }
     .package-img{
       width:100px;
@@ -342,6 +347,8 @@
       padding:30px;
       border-radius:12px;
       border:1px solid #2d3a50;
+      /* 锚点跳转平滑定位 */
+      scroll-margin-top:80px;
     }
     .form-title{
       font-size:20px;
@@ -405,6 +412,10 @@
       }
       .order-form{
         padding:20px;
+        scroll-margin-top:70px;
+      }
+      .package-box.active{
+        transform:scale(1.01);
       }
     }
 
@@ -592,14 +603,14 @@
   </div>
 </section>
 
-<!-- 套餐区域：黑金配色 + 等高对齐 + 可选择 + 立即订购按钮 -->
+<!-- 套餐区域：强化高亮 + 点击跳转表单 + 移除胶囊数量 -->
 <section class="pricing" id="order">
   <div class="container">
     <h2 class="section-title">Choose Your Package Today</h2>
     <p class="pricing-desc">Select the package that fits your goals. All orders include FREE UK delivery & 100% discreet shipping.</p>
 
     <div class="package-container">
-      <!-- 套餐1：VIP1 £198 -->
+      <!-- 套餐1：VIP1 £198 - 移除胶囊数量描述 -->
       <div class="package-box" data-package="vip1-£198" data-paylink="https://paypal.me/pinnaclefortune/198GBP">
         <div class="package-img">
           <img src="produck.png" alt="VIP1 Package">
@@ -608,7 +619,7 @@
           <span class="popular-tag">MOST POPULAR</span>
           <h3>VIP1 Package</h3>
           <ul>
-            <li>Buy 2 Get 1 FREE — Total 3 boxes (30 capsules)</li>
+            <li>Buy 2 Get 1 FREE — Total 3 boxes</li>
             <li>One-month male health consulting service</li>
             <li>24/7 access to male health experts</li>
             <li>Instant solutions to male health issues</li>
@@ -620,7 +631,7 @@
         </div>
       </div>
 
-      <!-- 套餐2：VIP2 £360 -->
+      <!-- 套餐2：VIP2 £360 - 移除胶囊数量描述 -->
       <div class="package-box" data-package="vip2-£360" data-paylink="https://paypal.me/pinnaclefortune/360GBP">
         <div class="package-img">
           <img src="produck.png" alt="VIP2 Package">
@@ -629,7 +640,7 @@
           <span class="vip-tag">VIP PLAN</span>
           <h3>VIP2 Package</h3>
           <ul>
-            <li>Buy 4 Get 2 FREE — Total 6 boxes (60 capsules)</li>
+            <li>Buy 4 Get 2 FREE — Total 6 boxes</li>
             <li>Three-month male health consulting service</li>
             <li>Personalized health plan & follow-up</li>
             <li>Priority access to health experts</li>
@@ -641,7 +652,7 @@
         </div>
       </div>
 
-      <!-- 套餐3：VIP3 £568 -->
+      <!-- 套餐3：VIP3 £568 - 移除胶囊数量描述 -->
       <div class="package-box" data-package="vip3-£568" data-paylink="https://paypal.me/pinnaclefortune/568GBP">
         <div class="package-img">
           <img src="produck.png" alt="VIP3 Package">
@@ -650,7 +661,7 @@
           <span class="vip-tag">ULTIMATE VIP</span>
           <h3>VIP3 Package</h3>
           <ul>
-            <li>Buy 7 Get 3 FREE — Total 10 boxes (100 capsules)</li>
+            <li>Buy 7 Get 3 FREE — Total 10 boxes</li>
             <li>Six-month male health consulting service</li>
             <li>One-on-one exclusive health consultant</li>
             <li>Lifetime access to health resources</li>
@@ -663,8 +674,8 @@
       </div>
     </div>
 
-    <!-- 内嵌订单表单：新增套餐下拉选择框 -->
-    <div class="order-form">
+    <!-- 内嵌订单表单：锚点定位目标 -->
+    <div class="order-form" id="form-target">
       <h3 class="form-title">Complete Your Order</h3>
       <form id="orderForm">
         <div class="form-group">
@@ -731,25 +742,30 @@
 </footer>
 
 <script>
-  // 套餐选择逻辑（点击套餐/立即订购按钮都可选中）
+  // 套餐选择逻辑：点击卡片/立即订购 → 高亮+跳转表单
   const packageBoxes = document.querySelectorAll('.package-box');
   const packageSelect = document.getElementById('package');
   const selectButtons = document.querySelectorAll('.select-package');
+  const formTarget = document.getElementById('form-target');
   let selectedPayLink = '';
 
-  // 点击套餐卡片选中
+  // 点击套餐卡片：高亮+选中+跳转表单
   packageBoxes.forEach(box => {
     box.addEventListener('click', () => {
       selectPackage(box);
+      // 平滑滚动到表单区域
+      formTarget.scrollIntoView({ behavior: 'smooth', block: 'start' });
     });
   });
 
-  // 点击立即订购按钮选中
+  // 点击立即订购按钮：高亮+选中+跳转表单（阻止事件冒泡避免重复触发）
   selectButtons.forEach(btn => {
     btn.addEventListener('click', (e) => {
       e.stopPropagation();
       const box = btn.closest('.package-box');
       selectPackage(box);
+      // 平滑滚动到表单区域
+      formTarget.scrollIntoView({ behavior: 'smooth', block: 'start' });
     });
   });
 
@@ -770,11 +786,11 @@
     });
   });
 
-  // 通用选中套餐函数
+  // 通用选中套餐函数（强化高亮效果）
   function selectPackage(box) {
     // 移除所有选中状态
     packageBoxes.forEach(b => b.classList.remove('active'));
-    // 添加当前选中状态
+    // 添加当前选中状态（强化高亮）
     box.classList.add('active');
     // 获取套餐信息
     const packageName = box.getAttribute('data-package');
